@@ -18,7 +18,12 @@
 ### Решение задачи
 
 ```python
-# TODO: you code here...
+amount = int(input("Сумма наличных денег в кармане: "))
+cost = int(input("Стоимость покупки: "))
+if cost <= amount:
+    print(f"Осталось {amount - cost} рублей")
+else:
+    print("Данной суммы не достаточно для покупки")
 ```
 
 ---
