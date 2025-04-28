@@ -2,3 +2,7 @@
 # Вывести на экран сумму всех элементов.
 
 numbers = [6, -4, 3, 8, 2, 0, 7]
+count = 0
+for number in numbers:
+    count = count + number
+    print(count)
