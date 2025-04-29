@@ -19,5 +19,14 @@ for i, fruit in enumerate(fruits, 1):
 #result = list(enumerate(fruits, 1))
 #print(result)
 
+# Вариант-1:
+# i = 1
+# for fruit in fruits:
+#     print(i, fruit)
+#     i += 1
+
+# Вариант-2:
+for i, fruit in enumerate(fruits, 1):
+    print(i, fruit)
 
 
