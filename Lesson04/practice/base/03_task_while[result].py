@@ -1,9 +1,8 @@
-a = 0
 n = int(input("n: "))
-summa = 0
+sum = 0
+a = 0
 while a <= n:
     if a % 2 == 0:
-        summa += a
+        sum += a
     a += 1
-
-print(summa)
+print(f"Сумма четных чисел от 0 до {n}: ", sum)

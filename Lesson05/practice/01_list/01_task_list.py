@@ -2,3 +2,9 @@
 # Каждый элемент должен быть выведен с новой строки.
 
 my_list = [24, "Василий", "выхухоль", 42, -12.5]
+#i = 0
+#while i < len(my_list):
+    #print(my_list[i])
+    #i += 1
+for element in my_list:
+    print(element)

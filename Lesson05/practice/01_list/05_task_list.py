@@ -4,8 +4,10 @@
 
 # Исходные данные:
 fruits = ["банан", "яблоко", "киви", "арбуз"]
-
-# TODO: your code here
+max_lenght = max(len(fruits) for fruit in fruits)
+for i, fruit in enumerate(fruits, 1):
+    spaces = max_lenght - len(fruit)
+    print(i, " " * spaces, fruit)
 
 # Пример вывода:
 # 1. яблоко
