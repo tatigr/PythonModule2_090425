@@ -5,11 +5,18 @@
 # Пример:
 # Дано: [2, -5, 8, 9, -25, 25, 4]
 # Результат: [3, 5, 2]
+<<<<<<< HEAD
 
+=======
+>>>>>>> 91c6c03517893abab01a3c834a1a0cd1c826d49d
 numbers = [2, -5, 8, 9, -25, 25, 4, 7, 16]
 results = []
 for number in numbers:
     if number > 0 and number ** 0.5 % 1 == 0:
         results.append(int(number ** 0.5))
 
+<<<<<<< HEAD
 print(results)
+=======
+print(results)
+>>>>>>> 91c6c03517893abab01a3c834a1a0cd1c826d49d
