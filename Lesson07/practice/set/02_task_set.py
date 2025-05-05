@@ -6,3 +6,5 @@ set2 = {4, 5, 6, 7, 8}
 print(set1 | set2)
 
 
+new_set = set1 | set2
+print(new_set)

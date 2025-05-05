@@ -21,7 +21,11 @@ print('d = ', d)
 
 # Создание словаря с помощью мотода fromkeys:
 e = dict.fromkeys(['a', 'b', 'c'])
+<<<<<<< HEAD
 print('d = ', d)
+=======
+print('e = ', e)
+>>>>>>> add97ec0f02a090feb9f8521b3c595486b4d804f
 f = dict.fromkeys(['a', 'b', 'c'], 'initial')
 print('f = ', f)
 
