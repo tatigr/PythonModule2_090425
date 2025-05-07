@@ -2,7 +2,11 @@
 # Функция должна вызываться с любым количеством аргументов
 
 def average(*args):
+<<<<<<< HEAD
     return sum(args) / len(args)
+=======
+    return sum(args)/len(args)
+>>>>>>> ebdecbfce68d73ae8292aa219db282690adf0139
 
 
 print(average(3, 4, 8))

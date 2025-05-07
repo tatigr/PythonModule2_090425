@@ -6,7 +6,11 @@
 >>>>>>> 8136760f2e4c90398bfaa30199e9553bc21e1405
 # Оформите решение задачи в виде функции
 
+<<<<<<< HEAD
 def count_vowels(text: str):
+=======
+def count_vowels(text: str) -> int:
+>>>>>>> ebdecbfce68d73ae8292aa219db282690adf0139
     vowels = "ауоыэяюёие"
     num_vowels = 0
     for char in text.lower():
