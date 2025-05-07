@@ -60,6 +60,10 @@ def update_item_from_inventory(items: list[dict]) -> None:
      else:
         print(f"Товар '{name}' не найден.")
 
+# def filter_price(number):
+#     .......
+#     return number < n
+
 inventory = [
     {"name": "Ноутбук", "price": 1200, "quantity": 10},
     {"name": "Мышь", "price": 25, "quantity": 50},
