@@ -2,9 +2,8 @@
 # Решение реализовать в виде функции.
 # Билет считается счастливым, если сумма его первых и последних цифр равны.
 
-# Вариант-1
+# Вариант-1 (мой вариант)
 def lucky_ticket(ticket_number):
-<<<<<<< HEAD
     numbers_123 = ticket_number // 1000
     sum_123 = numbers_123 // 100 + numbers_123 // 10 % 10 + numbers_123 % 10
     numbers_456 = ticket_number % 1000
@@ -12,8 +11,6 @@ def lucky_ticket(ticket_number):
     if sum_123 == sum_456:
         return f"Этот билет - счастливый"
     return f"Этот билет не является счастливым"
-
-
 # Тестируем функцию
 print(lucky_ticket(123006))
 print(lucky_ticket(12321))
@@ -22,7 +19,9 @@ print(lucky_ticket(436751))
 print(lucky_ticket(000000))
 print(lucky_ticket(587677))
 print(lucky_ticket(541918))
-=======
+
+# Вариант-2
+def lucky_ticket_v2(ticket_number):
     ticket_number_str = str(ticket_number)
     if len(ticket_number_str) != 6:
         return False
@@ -37,7 +36,14 @@ print(lucky_ticket(541918))
 
     return sum_part1 == sum_part2
 
-def lucky_ticket_v2(ticket_number):
+# Тестируем функцию
+print(lucky_ticket_v2(123006)) # True
+print(lucky_ticket_v2(123206)) # False
+print(lucky_ticket_v2(436751)) # True
+
+
+# Вариант-3
+def lucky_ticket_v3(ticket_number):
     # ticket_number = 123456
     # ticket_number % 10 -> 6
     # ticket_number // 10 -> 12345
@@ -55,13 +61,10 @@ def lucky_ticket_v2(ticket_number):
 
     return sum_part1 == sum_part2
 
-
-
-# Тестируем функцию
-print(lucky_ticket_v2(123006)) # True
-print(lucky_ticket_v2(123206)) # False
-
-print(lucky_ticket_v2(436751)) # True
+# Тестируем функцию:
+print(lucky_ticket_v3(123006)) # True
+print(lucky_ticket_v3(123206)) # False
+print(lucky_ticket_v3(436751)) # True
 # print(lucky_ticket(12321))
 # print(lucky_ticket(1232123))
->>>>>>> ebdecbfce68d73ae8292aa219db282690adf0139
+

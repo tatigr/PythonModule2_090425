@@ -45,24 +45,24 @@ def find_item_by_name(items: list[dict], name: str) -> dict | None:
 
 def update_item_from_inventory(items: list[dict]) -> None:
      """Обновляет товар из инвентаря по названию с вводом данных внутри функции."""
-     name = input("Введите название товара для корректировки: ")
-     item = find_item_by_name(items, name)
-     if item:
-         print(f"Текущие данные: Цена = {item['price']}, Количество = {item['quantity']}")
-         try:
-             new_price = float(input("Введите новую цену (оставьте пустым, чтобы не менять): ") or item['price'])
-             new_quantity = int(input("Введите новое количество (оставьте пустым, чтобы не менять): ") or item['quantity'])
-             item['price'] = new_price
-             item['quantity'] = new_quantity
-             print(f"Товар '{name}' успешно обновлён.")
-         except ValueError:
+     name = str(input("Введите название товара для корректировки: "))
+     print(f"Текущие данные: Цена = {item['price']}, Количество = {item['quantity']}")
+     try:
+         new_price = float(input("Введите новую цену (оставьте пустым, чтобы не менять): ") or item['price'])
+         new_quantity = int(input("Введите новое количество (оставьте пустым, чтобы не менять): ") or item['quantity'])
+         item['price'] = new_price
+         item['quantity'] = new_quantity
+         print(f"Товар '{name}' успешно обновлён.")
+     except ValueError:
              print("Ошибка: Введены некорректные данные.")
      else:
         print(f"Товар '{name}' не найден.")
 
-# def filter_price(number):
-#     .......
-#     return number < n
+# # 6. Вывести товары с ценой ниже заданной
+# price = int(input("Введите цену товара для сортировки: "))
+# filtered_items = [item for item in items if item["price"] < price]
+# print(f"Товары, цена которых меньше '{price}': ")
+
 
 inventory = [
     {"name": "Ноутбук", "price": 1200, "quantity": 10},
@@ -95,9 +95,10 @@ while True:
         else:
             print(f"Товар '{name}' не найден.")
         input("Press Enter to continue")
-    #
+
     # elif choice == "6":
     #
     # elif choice == "7":
-    #
     elif choice == "8":
+        print()
+

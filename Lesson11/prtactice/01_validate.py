@@ -4,8 +4,14 @@
 
 
 def validate_arguments(func):
-    # Ваш код здесь
-    pass
+    def wrapper(*args, **kwargs):
+        func(*args, **kwargs)
+        for arg in args:
+            if arg < 0:
+                raise ValueError("Все аргументы должны быть > 0")
+    return wrapper
+
+
 
 
 @validate_arguments

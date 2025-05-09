@@ -9,7 +9,7 @@
 # Ввод: -2/3 - -2
 # Вывод: 1 1/3
 
-<<<<<<< HEAD
+
 # "5/6 + 2 4/7"
 # "12 4/8 - 5 3/2" - "парсинг"
 # "12 4/8 - 5 3/2".split
@@ -43,8 +43,7 @@ num_denom_1 = whole_part_terms_1[1].split("/")
 print("Числитель и знаменатель второй дроби:", num_denom_1)
 
 from fractions import Fraction
-=======
->>>>>>> ebdecbfce68d73ae8292aa219db282690adf0139
+# to be done
 
 
 

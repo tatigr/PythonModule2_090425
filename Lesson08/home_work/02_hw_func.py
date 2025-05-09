@@ -3,15 +3,12 @@
 # Если отрезков с минимальной длиной несколько - вывести любой
 
 # При решении задачи необходимо использовать функцию расстояния между двумя точками.
+
 import math
-<<<<<<< HEAD
-def distance(x1, y1, x2, y2):
-        return math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2)
-=======
 
 def distance(x1, y1, x2, y2):
-    return math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2)
->>>>>>> ebdecbfce68d73ae8292aa219db282690adf0139
+        return math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2)
+
 
 xa = int(input("Введите координату х для точки а: "))
 ya = int(input("Введите координату y для точки а: "))
@@ -26,19 +23,10 @@ ac = distance(xa, ya, xc, yc)
 
 min_length = min(ab, bc, ac)
 if min_length == ab:
-<<<<<<< HEAD
-    print(f"Самый короткий отрезок: AB ({int(ab)})")
+    print(f"Самый короткий отрезок: AB ({round(ab, 2)})")
 elif min_length == bc:
-    print(f"Самый короткий отрезок: BC ({int(bc)})")
+    print(f"Самый короткий отрезок: BC ({round(bc, 2)})")
 else:
-    print(f"Самый короткий отрезок: AC ({int(ac)})")
+    print(f"Самый короткий отрезок: AC ({round(ac, 2)})")
 
-=======
-    print(f"Самый короткий отрезок: AB ({ab})")
-elif min_length == bc:
-    print(f"Самый короткий отрезок: BC ({bc})")
-else:
-    print(f"Самый короткий отрезок: AC ({ac})")
 
-print("Самый короткий отрезок:", ...)  # Выводим название отрезка, например “АС”.
->>>>>>> ebdecbfce68d73ae8292aa219db282690adf0139
