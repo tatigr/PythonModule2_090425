@@ -5,6 +5,7 @@
 
 def validate_arguments(func):
     def wrapper(*args, **kwargs):
+<<<<<<< HEAD
         func(*args, **kwargs)
         for arg in args:
             if arg < 0:
@@ -12,6 +13,14 @@ def validate_arguments(func):
     return wrapper
 
 
+=======
+        for arg in args:
+            if arg < 0:
+                raise ValueError("Все аргументы должны быть > 0")
+        return func(*args, **kwargs)
+
+    return wrapper
+>>>>>>> 040a54448726c63696683ea0a75a24518807d195
 
 
 @validate_arguments

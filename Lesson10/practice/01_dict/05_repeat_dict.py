@@ -9,7 +9,6 @@ def find_item_by_name(items: list[dict], name: str) -> dict | None:
     for item in items:
         if item["name"].lower() == name.lower():
             return item
-
     return None
 
 items = [

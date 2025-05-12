@@ -12,7 +12,7 @@ items = [
 
 # i = 1
 for i, item in enumerate(items, 1):
-    print(f"{i} {item["name"]}")
+    print(f"{i}. {item["name"]}")
 
 
 # i = 1

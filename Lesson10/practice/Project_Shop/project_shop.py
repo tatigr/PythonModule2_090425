@@ -10,15 +10,16 @@ def display_menu():
     print("7. Вывести товары с количеством ниже заданного.")
     print("8. Выход. \n")
 
-
+# 1. Показать список товаров
 def show_items(items: list[dict]):
     for i, item in enumerate(items):
-        print(f"{i} Название: {item['name']}, Цена: {item['price']}, Количество: {item['quantity']}")
+        print(f"{i + 1} Название: {item['name']}, Цена: {item['price']}, Количество: {item['quantity']}")
 
-
+# 2. Добавить товар
 def add_item_to_inventory(items: list[dict]) -> None:
     """Добавляет товар в инвентарь"""
     name = input("Введите название товара: ")
+    name = name.title()
     price = float(input("Введите цену товара: "))
     quantity = int(input("Введите количество товара: "))
     new_item = {
@@ -28,6 +29,8 @@ def add_item_to_inventory(items: list[dict]) -> None:
     }
     items.append(new_item)
 
+
+# 3. Удалить товар
 def remove_item_from_inventory(items: list[dict]) -> None:
     """Удаляет товар из инвентаря по названию с вводом данных внутри функции."""
     name = input("Введите название товара для удаления: ")
@@ -36,32 +39,62 @@ def remove_item_from_inventory(items: list[dict]) -> None:
             items.remove(item)
             print(f"Товар '{name}' успешно удалён.")
 
-def find_item_by_name(items: list[dict], name: str) -> dict | None:
+
+# 4. Обновить товар
+def update_item_from_inventory(items: list[dict]) -> None:
+    """Обновляет товар из инвентаря по названию с вводом данных внутри функции."""
+    name = str(input("Введите название товара для корректировки: "))
     for item in items:
         if item["name"].lower() == name.lower():
+            print(f"Текущие данные: Цена = {item['price']}, Количество = {item['quantity']}")
+            try:
+                new_price = float(input("Введите новую цену или оставьте пустым, чтобы не менять: "))
+                new_quantity = int(input("Введите новое количество или оставьте пустым, чтобы не менять: "))
+
+                if new_price:
+                    item['price'] = float(new_price)
+                if new_quantity:
+                    item['quantity'] = int(new_quantity)
+                print(f"Товар '{name}' успешно обновлён.")
+            except ValueError:
+                print("Ошибка: Введены некорректные данные.")
+            return
+    print(f"Товар '{name}' не найден.")
+
+
+# 5. Найти товар по названию
+def find_item_by_name(items: list[dict]) -> dict | None:
+    name = input("Введите название товара для поиска: ")
+    for item in items:
+        if item["name"].lower() == name.lower():
+            print(f"Найден товар: Название: {item['name']}, Цена: {item['price']}, Количество: {item['quantity']}")
             return item
-
-    return None
-
-def update_item_from_inventory(items: list[dict]) -> None:
-     """Обновляет товар из инвентаря по названию с вводом данных внутри функции."""
-     name = str(input("Введите название товара для корректировки: "))
-     print(f"Текущие данные: Цена = {item['price']}, Количество = {item['quantity']}")
-     try:
-         new_price = float(input("Введите новую цену (оставьте пустым, чтобы не менять): ") or item['price'])
-         new_quantity = int(input("Введите новое количество (оставьте пустым, чтобы не менять): ") or item['quantity'])
-         item['price'] = new_price
-         item['quantity'] = new_quantity
-         print(f"Товар '{name}' успешно обновлён.")
-     except ValueError:
-             print("Ошибка: Введены некорректные данные.")
-     else:
         print(f"Товар '{name}' не найден.")
+        return None
 
-# # 6. Вывести товары с ценой ниже заданной
-# price = int(input("Введите цену товара для сортировки: "))
-# filtered_items = [item for item in items if item["price"] < price]
-# print(f"Товары, цена которых меньше '{price}': ")
+
+
+# 6. Вывести товары с ценой ниже заданной
+def filter_item_by_price(items: list[dict], price: float) -> dict | None:
+    price = float(input("Введите цену товара для сортировки: "))
+    for item in items:
+        if item["price"] < price:
+            print(f"Товары, стоимость которых меньше {price}: {inventory}")
+            return item
+        print(f"Товары, стоимость которых меньше '{price}' не найдены.")
+        return None
+
+
+# 7. Вывести товары с количеством ниже заданного
+def filter_item_by_quantity(items: list[dict], quantity: int) -> dict | None:
+    quantity = int(input("Введите количество товара для сортировки: "))
+    for item in items:
+        if item["quantity"] < quantity:
+            print(f"Список товаров, количество которых меньше {quantity}: {inventory}")
+            return item
+        print(f"Товары, количество которых меньше {quantity}' не найдены.")
+        return None
+
 
 
 inventory = [
@@ -88,17 +121,21 @@ while True:
         update_item_from_inventory(inventory)
         input("Press Enter to continue")
     elif choice == "5":
-        name = input("Введите название товара для поиска: ")
-        item = find_item_by_name(inventory, name)
-        if item:
-            print(f"Найден товар: Название: {item['name']}, Цена: {item['price']}, Количество: {item['quantity']}")
-        else:
-            print(f"Товар '{name}' не найден.")
+        item = find_item_by_name(inventory)
         input("Press Enter to continue")
 
-    # elif choice == "6":
-    #
-    # elif choice == "7":
-    elif choice == "8":
-        print()
+    elif choice == "6":
+        item = filter_item_by_price(inventory)
+        input("Press Enter to continue")
 
+    elif choice == "7":
+        item = filter_item_by_quantity(inventory)
+        input("Press Enter to continue")
+
+    elif choice == "8":
+        print("Вы вышли из программы.")
+        break
+    else:
+        print("Выберите корректный пункт меню.")
+
+        input("Press Enter to continue")
