@@ -20,6 +20,7 @@ def generate_password(password_length: int):
     return password
 
 
+
 print(generate_password(5))
 print(generate_password(10))
 print(generate_password(8))
@@ -31,4 +32,11 @@ print(generate_password(6))
 print(generate_password(12))
 
 
+
+
+# assert len(generate_password(5)) == 5
+# assert len(generate_password(12)) == 12
+# assert len(generate_password(16)) == 16
+# assert len(generate_password(22)) == 22
+# assert len(generate_password(2)) == 2
 

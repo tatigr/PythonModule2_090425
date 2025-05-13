@@ -1,5 +1,6 @@
 import requests
 
+
 # # Дан пример получения данных с сайта: jsonplaceholder.typicode.com
 #
 # url = 'https://jsonplaceholder.typicode.com/todos/2'
@@ -11,6 +12,16 @@ import requests
 # else:
 #     print(f'Ошибка: {response.status_code}')
 
+# Дан пример получения данных с сайта: jsonplaceholder.typicode.com
+
+url = 'https://jsonplaceholder.typicode.com/todoss/2'
+response = requests.get(url)
+
+if response.status_code == 200: # 200 - OK, 404 - Not found, 400 - Bad request, 500 - ...
+    data = response.json()  # Преобразование ответа в JSON
+    print(data)
+else:
+    print(f'Ошибка: {response.status_code}')
 
 # Задание 1: Получение информации о пользователе.
 # Напишите функцию, которая принимает идентификатор пользователя (например, число) и отправляет GET-запрос
@@ -27,8 +38,6 @@ def get_user(user_id: int) -> dict | None:
         return data
     # raise ValueError
     print("Пользователь не найден")
-
-
 
 
 

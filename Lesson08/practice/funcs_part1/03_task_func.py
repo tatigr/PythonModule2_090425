@@ -12,6 +12,7 @@ def count_vowels(text: str): #-> int:
             num_vowels += 1
     return num_vowels
 
+
 # Проверка данных (автотесты)
 assert count_vowels("маМа мЫла РамУ") == 6 #6
 assert count_vowels("Привет, как дела?") == 5 #5
@@ -19,3 +20,4 @@ assert count_vowels("После этого, возможно, функция н�
 assert count_vowels("мамА мыла РамУ") == 6 # 6
 assert count_vowels("привет, как дела?") == 5 # 5
 assert count_vowels("произвольный текст") == 5 # 5
+
