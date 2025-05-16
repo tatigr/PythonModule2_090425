@@ -18,3 +18,4 @@
 #
 # print(list(map(chr, range(ord('А'), ord('Я')+1))))
 
+import os

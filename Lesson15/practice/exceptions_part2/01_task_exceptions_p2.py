@@ -7,7 +7,7 @@ def check_age(age):
 
 try:
     age = int(input("Введите возраст: "))
-        print(check_age(age))
+    print(check_age(age))
 except ValueError as e:
-    print(f"Ошибка: {e}")
+    print(e)
 

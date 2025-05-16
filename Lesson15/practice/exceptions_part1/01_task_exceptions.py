@@ -8,6 +8,8 @@ while True:
         break
     except ValueError:
         print("Вы ввели некорректное значение")
+    # else:  # можно не использовать
+    #     break  # переехал выше
 
 result  = number ** 2 - 4 * number
 print(f"Результат: {result}")

@@ -7,5 +7,7 @@ def validate_email(email):
 
 # Добавьте обработку исключения ValueError
 try:
-    print(validate_email)
-print(validate_email("us er.example.com"))
+    email = (input("Введите email: "))
+    print(validate_email(email))
+except ValueError as e:
+    print(e)

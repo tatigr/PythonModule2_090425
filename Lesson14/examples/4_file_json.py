@@ -14,6 +14,7 @@ with open(path, 'w', encoding='UTF-8') as file:
 
 # Читаем JSON из файла и преобразуем к типу Python
 with open(path, 'r', encoding='UTF-8') as f:
+
     read_data = json.load(f)
 
 print("type = ", type(read_data))

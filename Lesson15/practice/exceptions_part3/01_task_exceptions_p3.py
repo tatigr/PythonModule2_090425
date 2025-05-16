@@ -20,5 +20,5 @@ except FileNotFoundError:
     print("Файл не найден!")
 except json.JSONDecodeError as e:
     print(f"Ошибка JSON: {e}")
-except KeyError:
+except KeyError:  # попытка обратиться некорректно по индексу к ключу словаря
     print(f"Некорректная обработка данных")
