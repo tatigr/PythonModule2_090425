@@ -18,6 +18,10 @@ def is_prime(n: int) -> bool:
         i += 6
     return True
 
+<<<<<<< HEAD
 
 result = (number for number in range(2, 21) if is_prime(number))
+=======
+result = (number for number in range(1, 21) if is_prime(number))
+>>>>>>> 28dabd5918e5dd4ff491c5b35598f4546f748173
 print(list(result))

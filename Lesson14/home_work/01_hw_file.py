@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # "Логирование в файл"
 #
 # Напишите функцию log() принимающую в качестве аргумента строку и дописывающую это строку в конец файла
@@ -18,3 +19,13 @@ def log(text: str, file: str = "log.txt") -> None:
 log("hello world")  # дописывает "hello world" в конец файла log.txt
 log("message", "log01.txt")  # дописывает "message" в конец файла log01.txt
 # Уточнение: функция log() все сообщения должна записывать на отдельных строках
+=======
+def log(text: str, file: str = "log.txt") -> None:
+    with open(file, "a", encoding="UTF-8") as f:
+        f.write(text + "\n")
+
+
+log("hello world")  # дописывает "hello world" в конец файла log.txt
+log("message", "log01.txt")  # дописывает "message" в конец файла log01.txt
+# Уточнение: функция log() все сообщения должна записывать на отдельных строках
+>>>>>>> 28dabd5918e5dd4ff491c5b35598f4546f748173

@@ -1,6 +1,7 @@
 # Задача "Генератор четных чисел"
 # Напишите генераторную функцию even_numbers(n), которая генерирует все четные числа от 0 до n включительно.
 
+<<<<<<< HEAD
 # Вариант-1 (мой)
 # def is_even(number: int) -> bool:
 #     """
@@ -39,3 +40,13 @@ def even_numbers(number):
 
 for number in even_numbers(25):
      print(number)
+=======
+def even_numbers(n):
+    for el in range(0, n + 1, 2):
+        yield el
+
+
+
+for el in even_numbers(13):
+    print(el)
+>>>>>>> 28dabd5918e5dd4ff491c5b35598f4546f748173

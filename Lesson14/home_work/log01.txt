@@ -1,3 +1,6 @@
+<<<<<<< HEAD
  message
+=======
+>>>>>>> 28dabd5918e5dd4ff491c5b35598f4546f748173
 message
 message

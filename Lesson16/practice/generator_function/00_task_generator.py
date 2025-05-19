@@ -20,9 +20,17 @@ def is_prime(n: int) -> bool:
 
 
 def simple_primes(n):
+<<<<<<< HEAD
     for number in range(2, n +1):
         if is_prime(number):
             yield number
 
+=======
+    for number in range(2, n + 1):
+        if is_prime(number):
+            yield number
+
+
+>>>>>>> 28dabd5918e5dd4ff491c5b35598f4546f748173
 for prime in simple_primes(100):
     print(prime)

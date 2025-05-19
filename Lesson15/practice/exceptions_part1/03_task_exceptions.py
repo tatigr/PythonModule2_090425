@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 import json
 
@@ -27,3 +28,17 @@ for file_name in file_names:
 
 
 
+with open(path / file_names[2], "r") as file:
+    try:
+        data = json.load(file)
+    except json.decoder.JSONDecodeError:
+        print("Ошибка в JSON-файле")
+
+# path / file_names[0]
+# path / file_names[1]
+# path / file_names[2]
+#
+# {
+#   "name": "Петр",
+#   "age": 25,
+# }
