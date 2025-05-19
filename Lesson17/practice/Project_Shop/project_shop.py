@@ -2,10 +2,9 @@ def add_item(inventory):
     """Добавляет новый товар в инвентарь."""
     name = input("Введите название товара: ").strip()
     for item in inventory:
-        if item['name'].lower() == name.lower():
+        if item['name'] == name:
             print("Ошибка: Товар с таким названием уже существует.")
             return
-
     while True:
         try:
             price = float(input("Введите цену товара: "))
@@ -16,15 +15,16 @@ def add_item(inventory):
         except ValueError:
             print("Ошибка: Введите корректное число для цены.")
 
+    # TODO-1(complete): добавьте обработку ввода некорректного количества товаров (по аналогии с ценой)
     while True:
         try:
             quantity = int(input("Введите количество товара: "))
-            if quantity < 0:
-                print("Ошибка: Количество не может быть отрицательным.")
+            if quantity <= 0:
+                print("Ошибка: Цена должна быть положительным числом.")
             else:
                 break
         except ValueError:
-            print("Ошибка: Введите целое число для количества.")
+            print("Ошибка: Введите корректное число для количества.")
 
     inventory.append({"name": name, "price": price, "quantity": quantity})
     print(f"Товар '{name}' успешно добавлен.")
@@ -34,7 +34,7 @@ def remove_item(inventory):
     """Удаляет товар из инвентаря по названию."""
     name = input("Введите название товара для удаления: ").strip()
     for i, item in enumerate(inventory):
-        if item['name'].lower() == name.lower():
+        if item['name'] == name:
             del inventory[i]
             print(f"Товар '{name}' успешно удален.")
             return
@@ -45,8 +45,8 @@ def update_item(inventory):
     """Обновляет информацию о товаре."""
     name = input("Введите название товара для обновления: ").strip()
     for item in inventory:
-        if item['name'].lower() == name.lower():
-            print("Что вы хотите обновить?")
+        if item['name'] == name:
+            print("Какое поле вы хотите обновить?")
             print("1. Цена")
             print("2. Количество")
             choice = input("Введите номер опции: ")
@@ -55,85 +55,87 @@ def update_item(inventory):
                     try:
                         price = float(input("Введите новую цену: "))
                         if price <= 0:
-                            print("Ошибка: Цена должна быть положительной.")
+                            print("Ошибка: Цена должна быть положительным числом.")
                         else:
                             item['price'] = price
-                            print("Цена обновлена.")
+                            print(f"Цена товара '{name}' успешно обновлена.")
                             break
                     except ValueError:
-                        print("Ошибка: Введите число.")
+                        print("Ошибка: Введите корректное число для цены.")
             elif choice == '2':
-                while True:
-                    try:
-                        quantity = int(input("Введите новое количество: "))
-                        if quantity < 0:
-                            print("Ошибка: Количество не может быть отрицательным.")
-                        else:
-                            item['quantity'] = quantity
-                            print("Количество обновлено.")
-                            break
-                    except ValueError:
-                        print("Ошибка: Введите целое число.")
-            return
-    print("Товар не найден.")
+                # TODO-2: добавьте обработку ввода некорректного нового количества товаров (по аналогии с ценой)
+                quantity = int(input("Введите новое количество: "))
+                item['quantity'] = quantity
+                print(f"Количество товара '{name}' успешно обновлено.")
+
+    print(f"Товар с названием '{name}' не найден.")
 
 
 def search_item(inventory):
     """Поиск товара по части названия."""
-    query = input("Введите часть названия: ").strip().lower()
-    found = [item for item in inventory if query in item['name'].lower()]
-    if found:
+    query = input("Введите часть названия товара для поиска: ").strip().lower()
+    found_items = [item for item in inventory if query in item['name'].lower()]
+    if found_items:
         print("Найденные товары:")
-        for item in found:
-            print(f"{item['name']}: {item['price']} руб, {item['quantity']} шт")
+        for item in found_items:
+            print(f"Название: {item['name']}, Цена: {item['price']}, Количество: {item['quantity']}")
     else:
-        print("Совпадений не найдено.")
+        print("Товары не найдены.")
+
 
 
 def display_inventory(inventory):
-    """Выводит все товары."""
+    """Выводит список всех товаров."""
+    # TODO-3(complete): если в списке нет товаров, выведите "Инвентарь пуст"
+    print("Список товаров:")
+    # if len(inventory) == 0:
     if not inventory:
-        print("Инвентарь пуст.")
+        print("Инвентарь пуст")
         return
-    for i, item in enumerate(inventory, 1):
-        print(f"{i}. {item['name']}: {item['price']} руб, {item['quantity']} шт")
+
+    for i, item in enumerate(inventory):
+        print(f"{i + 1}. Название: {item['name']}, Цена: {item['price']}, Количество: {item['quantity']}")
 
 
 def display_below_price(inventory):
-    """Товары дешевле заданной цены."""
-    try:
-        price_limit = float(input("Введите цену: "))
-        filtered = [item for item in inventory if item['price'] < price_limit]
-        if filtered:
-            for item in filtered:
-                print(f"{item['name']}: {item['price']} руб")
-        else:
-            print("Нет таких товаров.")
-    except ValueError:
-        print("Ошибка: Введите число.")
+    """Выводит товары с ценой ниже заданной."""
+    while True:
+        try:
+            price_limit = float(input("Введите максимальную цену: "))
+            if price_limit < 0:
+                print("Ошибка: Цена не может быть отрицательной.")
+            else:
+                break
+        except ValueError:
+            print("Ошибка: Введите корректное число для цены.")
+    below_price_items = [item for item in inventory if item['price'] < price_limit]
+    # TODO-4: если товары ниже указанной цены не найдены, выведите "Нет товаров с ценой ниже"
+    print(f"Товары с ценой ниже {price_limit}:")
+    for item in below_price_items:
+        print(f"Название: {item['name']}, Цена: {item['price']}, Количество: {item['quantity']}")
 
 
 def display_below_quantity(inventory):
-    """Товары с малым количеством."""
-    try:
-        quantity_limit = int(input("Введите количество: "))
-        filtered = [item for item in inventory if item['quantity'] < quantity_limit]
-        if filtered:
-            for item in filtered:
-                print(f"{item['name']}: {item['quantity']} шт")
-        else:
-            print("Нет таких товаров.")
-    except ValueError:
-        print("Ошибка: Введите целое число.")
+    """Выводит товары с количеством ниже заданного."""
+    while True:
+        try:
+            quantity_limit = int(input("Введите максимальное количество: "))
+            if quantity_limit < 0:
+                print("Ошибка: Количество не может быть отрицательным.")
+            else:
+                break
+        except ValueError:
+            print("Ошибка: Введите целое число для количества.")
+    below_quantity_items = [item for item in inventory if item['quantity'] < quantity_limit]
+    # TODO-5: если товары с количеством ниже не найдены, выведите "Нет товаров с количеством ниже"
+    print(f"Товары с количеством ниже {quantity_limit}:")
+    for item in below_quantity_items:
+        print(f"Название: {item['name']}, Цена: {item['price']}, Количество: {item['quantity']}")
 
 
 def main():
-    inventory = [
-        {"name": "Ноутбук", "price": 1200, "quantity": 10},
-        {"name": "Мышь", "price": 25, "quantity": 50},
-        {"name": "Клавиатура", "price": 50, "quantity": 30},
-    ]
-
+    """Основная функция приложения."""
+    inventory = []
     menu = {
         '1': display_inventory,
         '2': add_item,
@@ -143,7 +145,6 @@ def main():
         '6': display_below_price,
         '7': display_below_quantity,
     }
-
     while True:
         print("\nМеню:")
         print("1. Показать список товаров.")
@@ -151,18 +152,19 @@ def main():
         print("3. Удалить товар.")
         print("4. Обновить товар.")
         print("5. Найти товар по названию.")
-        print("6. Товары дешевле заданной цены.")
-        print("7. Товары с количеством ниже заданного.")
+        print("6. Вывести товары с ценой ниже заданной.")
+        print("7. Вывести товары с количеством ниже заданного.")
         print("8. Выход.")
 
-        choice = input("Выберите пункт: ")
+        choice = input("Выберите операцию: ")
+        # TODO-0(complete): реализуйте выбор пунктов меню, используя словарь menu_options = {}
         if choice == '8':
-            print("Выход из программы.")
+            print("Завершение работы программы.")
             break
-        elif choice in menu:
+        try:
             menu[choice](inventory)
-        else:
-            print("Ошибка: неверный ввод.")
+        except KeyError:
+            print("Выбран несуществующий пункт")
 
 
 if __name__ == "__main__":
