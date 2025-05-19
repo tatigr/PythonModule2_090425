@@ -12,6 +12,7 @@
 # Выход
 # 5
 
+
 # import random
 # number_of_participants = int(input("Введите число участников: "))
 # numbers = [random.randint(1, 100) for _ in range(number_of_participants)]
