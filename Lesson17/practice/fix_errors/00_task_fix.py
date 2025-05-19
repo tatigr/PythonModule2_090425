@@ -1,26 +1,15 @@
 # Даны функции
-def average(numbers: list) -> float:
-    "Нахождение среднеарифметического"
-    total = sum(numbers)
-    return total / len(numbers)
-
-
 def get_unique_elements(data: list) -> list:
     unique = []
     for item in data:
         if item not in unique:
             unique.append(item)
-<<<<<<< HEAD
         # else:
         #     unique.append(item) ()
-=======
-
->>>>>>> fa06aba12d3cef818368f3ad3c377a80d6402cdb
     return unique
 
-
 if __name__ == "__main__":
-<<<<<<< HEAD
+
     assert average([3, 3, 3]) == 3.0
     assert average([0, 2, 2, 0]) == 1.0
     assert average([4, 8, 0]) == 4.0
@@ -34,14 +23,10 @@ if __name__ == "__main__":
 
 
 
-
-
-
-
 # Протестируйте работу функции.
 # Исправьте ошибки.
 # Является ли функция чистой?
-=======
+
     # assert average([3, 3, 3]) == 3.0
     # assert average([0, 2, 0, 2]) == 1.0
     # assert average([5, 5, 5]) == 5.0
@@ -58,4 +43,4 @@ if __name__ == "__main__":
     assert get_unique_elements([4]) == [4]
     assert get_unique_elements(["hello", "hi", "hello"]) == ["hello", "hi"]
     assert get_unique_elements(["hello", (2, 4), 3, (2, 4), 3, 3]) == ["hello", (2, 4), 3]
->>>>>>> fa06aba12d3cef818368f3ad3c377a80d6402cdb
+
